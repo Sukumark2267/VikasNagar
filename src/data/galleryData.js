@@ -1,0 +1,15 @@
+import communityImage from '../assets/images/gallery-community.svg'
+import youthImage from '../assets/images/gallery-youth.svg'
+import developmentImage from '../assets/images/gallery-development.svg'
+import eventImage from '../assets/images/gallery-event.svg'
+
+export const galleryItems = [
+  { id: 1, category: 'meetings', image: communityImage, title: { hi: 'जन-संवाद', en: 'Public Dialogue' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'वास्तविक जन-संवाद फोटो यहाँ जोड़ें।', en: 'Add a verified public dialogue photo here.' } },
+  { id: 2, category: 'youth', image: youthImage, title: { hi: 'युवा सहभागिता', en: 'Youth Participation' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'युवा गतिविधि की अनुमति-प्राप्त फोटो यहाँ जोड़ें।', en: 'Add a permission-cleared youth activity photo here.' } },
+  { id: 3, category: 'development', image: developmentImage, title: { hi: 'विकास संवाद', en: 'Development Dialogue' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'स्थानीय विकास चर्चा की फोटो यहाँ जोड़ें।', en: 'Add a local development discussion photo here.' } },
+  { id: 4, category: 'community', image: communityImage, title: { hi: 'समुदाय के साथ', en: 'With the Community' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'सत्यापित सामुदायिक गतिविधि फोटो के लिए स्थान।', en: 'Space for a verified community activity photo.' } },
+  { id: 5, category: 'events', image: eventImage, title: { hi: 'सार्वजनिक आयोजन', en: 'Public Event' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'आयोजन की प्रामाणिक फोटो यहाँ जोड़ें।', en: 'Add an authenticated event photo here.' } },
+  { id: 6, category: 'youth', image: youthImage, title: { hi: 'कौशल और खेल', en: 'Skills & Sports' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'युवा कौशल या खेल गतिविधि फोटो के लिए स्थान।', en: 'Space for a youth skills or sports activity photo.' } },
+  { id: 7, category: 'development', image: developmentImage, title: { hi: 'स्थानीय प्राथमिकताएँ', en: 'Local Priorities' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'स्थानीय क्षेत्र भ्रमण की सत्यापित फोटो यहाँ जोड़ें।', en: 'Add a verified local area visit photo here.' } },
+  { id: 8, category: 'events', image: eventImage, title: { hi: 'सामुदायिक पहल', en: 'Community Initiative' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'सामुदायिक पहल की फोटो के लिए स्थान।', en: 'Space for a community initiative photo.' } },
+]
