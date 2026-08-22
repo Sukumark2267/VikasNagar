@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import LanguageToggle from './LanguageToggle'
@@ -31,6 +32,26 @@ export default function Header() {
     ['/gallery', t.nav.gallery], ['/videos', t.nav.videos], ['/contact', t.nav.contact],
   ]
 
+  const navigation = (
+    <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label="Primary navigation">
+      <div className="mobile-nav-top">
+        <span className="mobile-nav-title">VISION VIKAS 2027–32</span>
+        <button className="menu-button menu-button--close" type="button" onClick={() => setMenuOpen(false)} aria-label={t.nav.close}>
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div className="nav-links">
+        {links.map(([to, label]) => (
+          <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => isActive ? 'active' : ''}>{label}</NavLink>
+        ))}
+      </div>
+      <div className="mobile-nav-actions">
+        <LanguageToggle />
+        <Link className="button button--primary button--full" to="/register">{t.nav.register}</Link>
+      </div>
+    </nav>
+  )
+
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
@@ -41,23 +62,7 @@ export default function Header() {
             <span className="brand-copy"><strong>Kuldeep Kumar</strong><small>VISION VIKAS 2027–32</small></span>
           </Link>
 
-          <nav className={`main-nav${menuOpen ? ' main-nav--open' : ''}`} aria-label="Primary navigation">
-            <div className="mobile-nav-top">
-              <span className="mobile-nav-title">VISION VIKAS 2027–32</span>
-              <button className="menu-button menu-button--close" type="button" onClick={() => setMenuOpen(false)} aria-label={t.nav.close}>
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="nav-links">
-              {links.map(([to, label]) => (
-                <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => isActive ? 'active' : ''}>{label}</NavLink>
-              ))}
-            </div>
-            <div className="mobile-nav-actions">
-              <LanguageToggle />
-              <Link className="button button--primary button--full" to="/register">{t.nav.register}</Link>
-            </div>
-          </nav>
+          {!menuOpen && navigation}
 
           <div className="header-actions">
             <LanguageToggle />
@@ -68,7 +73,13 @@ export default function Header() {
           </div>
         </div>
       </header>
-      {menuOpen && <button className="nav-backdrop" type="button" aria-label={t.nav.close} onClick={() => setMenuOpen(false)} />}
+      {menuOpen && createPortal(
+        <>
+          {navigation}
+          <button className="nav-backdrop" type="button" aria-label={t.nav.close} onClick={() => setMenuOpen(false)} />
+        </>,
+        document.body,
+      )}
     </>
   )
 }
