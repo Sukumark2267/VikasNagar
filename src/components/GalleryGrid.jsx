@@ -21,12 +21,17 @@ export default function GalleryGrid({ items, filterable = false }) {
       )}
       <div className={`gallery-grid${filterable ? ' gallery-grid--full' : ''}`}>
         {visible.map((item, index) => (
-          <article className={`gallery-card gallery-card--${(index % 3) + 1}`} key={item.id}>
-            <img src={item.image} alt={`${item.title[language]} — ${item.caption[language]}`} loading="lazy" />
+          <article className={`gallery-card gallery-card--${(index % 3) + 1}${item.orientation ? ` gallery-card--${item.orientation}` : ''}`} key={item.id}>
+            <img src={item.image} alt={`${item.title[language]} — ${item.caption[language]}`} loading="lazy" decoding="async" />
             <div className="gallery-overlay">
               <span className="gallery-category">{t.pages.gallery.filters[item.category]}</span>
               <h3>{item.title[language]}</h3>
-              <div className="gallery-meta"><span><Icon name="calendar" size={14} />{item.date[language]}</span><span><Icon name="pin" size={14} />{item.location[language]}</span></div>
+              {(item.date || item.location) && (
+                <div className="gallery-meta">
+                  {item.date && <span><Icon name="calendar" size={14} />{item.date[language]}</span>}
+                  {item.location && <span><Icon name="pin" size={14} />{item.location[language]}</span>}
+                </div>
+              )}
               <p>{item.caption[language]}</p>
             </div>
           </article>

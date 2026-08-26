@@ -39,7 +39,7 @@ export const en = {
     youthText: 'An open platform with young people for better access to careers, skills, sports, entrepreneurship and digital opportunities.', youthCta: 'Join the Youth Team',
     womenTitle: 'Women Empowerment', womenText: 'Encouraging women’s participation through skills, education, health awareness, safety dialogue and community leadership.',
     farmerTitle: 'Farmers & Rural Development', farmerText: 'A shared vision focused on scheme awareness, market links, rural roads, irrigation awareness and sustainable agriculture.',
-    galleryEyebrow: 'Across Vikasnagar', galleryTitle: 'Photo Gallery', galleryIntro: 'A sample gallery for public dialogue, youth activities and community events. Verified photographs will be added when available.',
+    galleryEyebrow: 'Across Vikasnagar', galleryTitle: 'Photo Gallery', galleryIntro: 'Highlights from public dialogue, youth participation, community initiatives and local events across Vikasnagar.',
     videosEyebrow: 'Watch and connect', videosTitle: 'Video Messages',
     socialTitle: 'Connect on social media', socialText: 'Follow official social channels for the latest public messages and community conversations.',
     ctaTitle: "Be Part of Vikasnagar's Development", ctaText: 'Your time, experience and ideas are our collective strength.', ctaButton: 'Join Us Today',
@@ -84,12 +84,12 @@ export const en = {
     },
     gallery: {
       eyebrow: 'Dialogue in pictures', title: 'Photo Gallery', subtitle: 'A space for public outreach and community activity.',
-      note: 'Sample visuals are currently shown. Verified, permission-cleared photos will be added before use.',
+      note: 'Use the filters to explore photographs from public meetings, youth activities, development initiatives, community outreach and events.',
       filters: { all: 'All', meetings: 'Public Meetings', youth: 'Youth', development: 'Development', community: 'Community', events: 'Events' },
     },
     videos: {
       eyebrow: 'Video Messages', title: 'Watch, Understand, Connect', subtitle: 'A space for public messages, development dialogue and community videos.',
-      note: 'Video links are sample placeholders and will be updated when verified channel links are available.',
+      note: 'Watch locally hosted videos from community gatherings, public addresses and field visits.',
     },
     register: {
       eyebrow: 'Take Part', title: 'Join Vikasnagar', subtitle: 'Volunteering, youth activity or development dialogue—tell us how you would like to participate.',

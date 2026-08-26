@@ -1,15 +1,65 @@
-import communityImage from '../assets/images/gallery-community.svg'
-import youthImage from '../assets/images/gallery-youth.svg'
-import developmentImage from '../assets/images/gallery-development.svg'
-import eventImage from '../assets/images/gallery-event.svg'
+const photoModules = import.meta.glob('../assets/gallery/*.webp', { eager: true, import: 'default' })
+
+const imageFor = (file) => photoModules[`../assets/gallery/${file}.webp`]
+const location = { hi: 'विकासनगर क्षेत्र', en: 'Vikasnagar area' }
+const captions = {
+  meetings: { hi: 'स्थानीय निवासियों के साथ संवाद और विचार-विमर्श की एक झलक।', en: 'A glimpse of dialogue and discussion with local residents.' },
+  youth: { hi: 'युवाओं की सहभागिता, खेल और स्थानीय नेतृत्व की एक झलक।', en: 'A moment of youth participation, sport and local leadership.' },
+  development: { hi: 'स्थानीय विकास और जन-जागरूकता से जुड़ी सामुदायिक पहल।', en: 'A community initiative focused on local development and public awareness.' },
+  community: { hi: 'समुदाय के बीच जनसंपर्क और सक्रिय सहभागिता का एक दृश्य।', en: 'A moment of public outreach and active community participation.' },
+  events: { hi: 'स्थानीय सार्वजनिक कार्यक्रम और सामुदायिक आयोजन की एक झलक।', en: 'A glimpse of a local public programme and community event.' },
+}
+
+const galleryItem = (file, category, hi, en, orientation) => ({
+  id: file,
+  category,
+  image: imageFor(file),
+  title: { hi, en },
+  location,
+  caption: captions[category],
+  orientation,
+})
 
 export const galleryItems = [
-  { id: 1, category: 'meetings', image: communityImage, title: { hi: 'जन-संवाद', en: 'Public Dialogue' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'वास्तविक जन-संवाद फोटो यहाँ जोड़ें।', en: 'Add a verified public dialogue photo here.' } },
-  { id: 2, category: 'youth', image: youthImage, title: { hi: 'युवा सहभागिता', en: 'Youth Participation' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'युवा गतिविधि की अनुमति-प्राप्त फोटो यहाँ जोड़ें।', en: 'Add a permission-cleared youth activity photo here.' } },
-  { id: 3, category: 'development', image: developmentImage, title: { hi: 'विकास संवाद', en: 'Development Dialogue' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'स्थानीय विकास चर्चा की फोटो यहाँ जोड़ें।', en: 'Add a local development discussion photo here.' } },
-  { id: 4, category: 'community', image: communityImage, title: { hi: 'समुदाय के साथ', en: 'With the Community' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'सत्यापित सामुदायिक गतिविधि फोटो के लिए स्थान।', en: 'Space for a verified community activity photo.' } },
-  { id: 5, category: 'events', image: eventImage, title: { hi: 'सार्वजनिक आयोजन', en: 'Public Event' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'आयोजन की प्रामाणिक फोटो यहाँ जोड़ें।', en: 'Add an authenticated event photo here.' } },
-  { id: 6, category: 'youth', image: youthImage, title: { hi: 'कौशल और खेल', en: 'Skills & Sports' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'युवा कौशल या खेल गतिविधि फोटो के लिए स्थान।', en: 'Space for a youth skills or sports activity photo.' } },
-  { id: 7, category: 'development', image: developmentImage, title: { hi: 'स्थानीय प्राथमिकताएँ', en: 'Local Priorities' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'स्थान जोड़ा जाना है', en: 'Location to be added' }, caption: { hi: 'स्थानीय क्षेत्र भ्रमण की सत्यापित फोटो यहाँ जोड़ें।', en: 'Add a verified local area visit photo here.' } },
-  { id: 8, category: 'events', image: eventImage, title: { hi: 'सामुदायिक पहल', en: 'Community Initiative' }, date: { hi: 'तारीख सत्यापित की जानी है', en: 'Date to be verified' }, location: { hi: 'विकासनगर', en: 'Vikasnagar' }, caption: { hi: 'सामुदायिक पहल की फोटो के लिए स्थान।', en: 'Space for a community initiative photo.' } },
+  galleryItem('IMG_9567', 'development', 'पौधारोपण अभियान', 'Tree-Planting Drive'),
+  galleryItem('Snapchat-785007876', 'meetings', 'जनता को संबोधन', 'Addressing the Community'),
+  galleryItem('IMG_9557', 'youth', 'युवा एवं व्यापारी संवाद', 'Youth and Traders’ Interaction'),
+  galleryItem('IMG_9559', 'events', 'तिरंगा यात्रा', 'Tiranga Yatra'),
+  galleryItem('IMG_9264', 'events', 'महिला सामुदायिक समारोह', 'Women’s Community Gathering'),
+  galleryItem('IMG_9272', 'meetings', 'सामुदायिक प्रतिनिधिमंडल', 'Community Delegation'),
+  galleryItem('IMG_9284', 'community', 'जनसंपर्क कार्यक्रम', 'Public Outreach Gathering'),
+  galleryItem('IMG_9296', 'events', 'दीप प्रज्वलन', 'Ceremonial Lamp Lighting'),
+  galleryItem('IMG_9319', 'meetings', 'महिला जनसभा', 'Women’s Public Gathering'),
+  galleryItem('IMG_9320', 'meetings', 'सामुदायिक सभा', 'Community Assembly'),
+  galleryItem('IMG_9411', 'community', 'जनसंवाद के आत्मीय क्षण', 'A Warm Moment of Public Dialogue'),
+  galleryItem('IMG_9417', 'meetings', 'जनभागीदारी', 'Community Participation'),
+  galleryItem('IMG_9468', 'events', 'प्रतिभागी सम्मान', 'Participant Felicitation'),
+  galleryItem('IMG_9555', 'community', 'कार्यकर्ता संवाद', 'Volunteer Interaction'),
+  galleryItem('IMG_9556', 'meetings', 'स्थानीय प्रतिनिधियों से संवाद', 'Meeting Local Representatives'),
+  galleryItem('IMG_9558', 'meetings', 'मोहल्ला जनसंवाद', 'Neighbourhood Public Dialogue'),
+  galleryItem('IMG_9560', 'meetings', 'स्थानीय मुद्दों पर बैठक', 'Meeting on Local Issues'),
+  galleryItem('IMG_9561', 'community', 'जनहित पदयात्रा', 'Civic Awareness March'),
+  galleryItem('IMG_9562', 'meetings', 'महिला समूह संवाद', 'Women’s Group Dialogue'),
+  galleryItem('IMG_9563', 'community', 'सामुदायिक मिलन', 'Community Get-Together'),
+  galleryItem('IMG_9564', 'community', 'महिला सहभागिता', 'Women’s Participation'),
+  galleryItem('IMG_9565', 'youth', 'युवा प्रतिनिधिमंडल', 'Youth Delegation'),
+  galleryItem('IMG_9566', 'youth', 'खेल मैदान में युवा', 'Youth at the Sports Ground'),
+  galleryItem('IMG_9569', 'events', 'सामुदायिक स्मृति सभा', 'Community Memorial Gathering'),
+  galleryItem('IMG_9570', 'community', 'योग एवं स्वास्थ्य', 'Yoga and Wellness'),
+  galleryItem('IMG_9571', 'development', 'जन-जागरूकता सामग्री विमोचन', 'Public Awareness Material Launch'),
+  galleryItem('IMG_9572', 'events', 'सार्वजनिक कार्यक्रम', 'Public Programme'),
+  galleryItem('IMG_9573', 'development', 'हरित विकास पहल', 'Green Development Initiative'),
+  galleryItem('IMG_9575', 'youth', 'युवा स्वयंसेवक टीम', 'Youth Volunteer Team'),
+  galleryItem('IMG_9576', 'meetings', 'रात्रि जनसंवाद', 'Evening Public Dialogue'),
+  galleryItem('IMG_9577', 'community', 'बाजार क्षेत्र जनसंपर्क', 'Market-Area Outreach'),
+  galleryItem('IMG_9578', 'meetings', 'स्थानीय प्रतिनिधियों से भेंट', 'Meeting Community Representatives'),
+  galleryItem('IMG_9579', 'community', 'नागरिक मुद्दों पर प्रदर्शन', 'Civic Issues Demonstration'),
+  galleryItem('IMG_9580', 'meetings', 'महिला संवाद', 'Women’s Dialogue'),
+  galleryItem('IMG_9581', 'youth', 'युवा जनसंपर्क', 'Youth Outreach'),
+  galleryItem('IMG_9582', 'meetings', 'सामुदायिक प्रतिनिधियों के साथ', 'With Community Representatives'),
+  galleryItem('IMG_9583', 'events', 'सार्वजनिक स्वागत', 'Public Welcome'),
+  galleryItem('IMG_9584', 'events', 'जनसंपर्क एवं स्वागत', 'Public Outreach and Welcome'),
+  galleryItem('IMG_9585', 'events', 'कार्यकर्ता स्वागत', 'Volunteer Welcome'),
+  galleryItem('Snapchat-2124096240', 'meetings', 'विशाल जनसभा', 'Large Public Gathering'),
+  galleryItem('IMG-20260826-WA0001', 'youth', 'खेल प्रतिभा एवं युवा सहभागिता', 'Sports Talent and Youth Participation', 'portrait'),
 ]

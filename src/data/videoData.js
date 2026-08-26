@@ -1,6 +1,36 @@
+import communityEventVideo from '../assets/videos/web/IMG_3050.mp4'
+import publicAddressVideo from '../assets/videos/web/IMG_3140.mp4'
+import fieldVisitVideo from '../assets/videos/web/VID-20260826-WA0002.mp4'
+import communityEventPoster from '../assets/videos/posters/IMG_3050.jpg'
+import publicAddressPoster from '../assets/videos/posters/IMG_3140.jpg'
+import fieldVisitPoster from '../assets/videos/posters/VID-20260826-WA0002.jpg'
+
 export const videoItems = [
-  { id: 1, platform: 'youtube', url: '', title: { hi: 'विज़न विकास 2027–32 — परिचय', en: 'Vision Vikas 2027–32 — Introduction' }, description: { hi: 'सत्यापित परिचय वीडियो उपलब्ध होने पर यहाँ जोड़ा जाएगा।', en: 'A verified introduction video will be added here when available.' }, date: { hi: 'शीघ्र उपलब्ध', en: 'Coming soon' } },
-  { id: 2, platform: 'facebook', url: '', title: { hi: 'विकासनगर जन-संवाद', en: 'Vikasnagar Public Dialogue' }, description: { hi: 'जन-संवाद का सत्यापित वीडियो लिंक यहाँ जोड़ा जाएगा।', en: 'A verified public dialogue video link will be added here.' }, date: { hi: 'शीघ्र उपलब्ध', en: 'Coming soon' } },
-  { id: 3, platform: 'youtube', url: '', title: { hi: 'युवा विकासनगर संदेश', en: 'Youth Vikasnagar Message' }, description: { hi: 'युवाओं के लिए सत्यापित वीडियो संदेश का स्थान।', en: 'Space for a verified video message for young people.' }, date: { hi: 'शीघ्र उपलब्ध', en: 'Coming soon' } },
-  { id: 4, platform: 'external', url: '', title: { hi: 'स्थानीय विकास प्राथमिकताएँ', en: 'Local Development Priorities' }, description: { hi: 'स्थानीय मुद्दों पर वीडियो चर्चा यहाँ प्रकाशित होगी।', en: 'A video discussion on local priorities will be published here.' }, date: { hi: 'शीघ्र उपलब्ध', en: 'Coming soon' } },
+  {
+    id: 'IMG_3050',
+    platform: 'local',
+    source: communityEventVideo,
+    poster: communityEventPoster,
+    duration: '1:38',
+    title: { hi: 'सामुदायिक समारोह और जनसंपर्क', en: 'Community Gathering and Public Outreach' },
+    description: { hi: 'समारोह में संबोधन, सहभागियों से संवाद और सम्मान के दृश्य।', en: 'Scenes from the gathering, including an address, participant interaction and felicitation.' },
+  },
+  {
+    id: 'IMG_3140',
+    platform: 'local',
+    source: publicAddressVideo,
+    poster: publicAddressPoster,
+    duration: '0:09',
+    title: { hi: 'जनसभा को संबोधन', en: 'Address to the Public Gathering' },
+    description: { hi: 'सामुदायिक सभा में दिए गए संबोधन का संक्षिप्त वीडियो।', en: 'A short video from an address delivered at a community gathering.' },
+  },
+  {
+    id: 'VID-20260826-WA0002',
+    platform: 'local',
+    source: fieldVisitVideo,
+    poster: fieldVisitPoster,
+    duration: '0:03',
+    title: { hi: 'मैदानी भ्रमण', en: 'Field Visit' },
+    description: { hi: 'स्थानीय साथियों के साथ मैदानी भ्रमण की संक्षिप्त झलक।', en: 'A brief glimpse of a field visit with local community members.' },
+  },
 ]
