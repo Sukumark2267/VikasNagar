@@ -50,7 +50,7 @@ export default function Home() {
       <section className="section section--tint">
         <div className="container">
           <div className="title-row"><SectionTitle eyebrow={t.home.videosEyebrow} title={t.home.videosTitle} /><Link className="text-link title-link" to="/videos">{language === 'hi' ? 'सभी वीडियो देखें' : 'View All Videos'}<Icon name="arrow" size={18} /></Link></div>
-          <div className="video-grid">{videoItems.slice(0, 3).map((item, index) => <VideoCard item={item} autoPlay={index === 0} key={item.id} />)}</div>
+          <div className="video-grid">{videoItems.slice(0, 3).map((item) => <VideoCard item={item} key={item.id} />)}</div>
         </div>
       </section>
 

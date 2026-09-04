@@ -13,7 +13,7 @@ export default function Videos() {
   return (
     <>
       <PageHero {...page} />
-      <section className="section section--tint"><div className="container"><div className="content-note"><Icon name="play" size={20} /><p>{page.note}</p></div><div className="video-grid video-grid--page">{videoItems.map((item, index) => <VideoCard item={item} autoPlay={index === 0} key={item.id} />)}</div></div></section>
+      <section className="section section--tint"><div className="container"><div className="content-note"><Icon name="play" size={20} /><p>{page.note}</p></div><div className="video-grid video-grid--page">{videoItems.map((item) => <VideoCard item={item} key={item.id} />)}</div></div></section>
       <CTASection title={t.home.socialTitle} text={t.home.socialText} button={t.nav.contact} to="/contact" />
     </>
   )
