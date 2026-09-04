@@ -1,7 +1,7 @@
 import { useLanguage } from '../context/LanguageContext'
 import Icon from './Icon'
 
-export default function VideoCard({ item }) {
+export default function VideoCard({ item, autoPlay = false }) {
   const { language } = useLanguage()
   const watch = language === 'hi' ? 'वीडियो देखें' : 'Watch video'
   const unavailable = language === 'hi' ? 'वीडियो शीघ्र जोड़ा जाएगा' : 'Video coming soon'
@@ -12,7 +12,7 @@ export default function VideoCard({ item }) {
     <article className="video-card">
       <div className={`video-thumbnail video-thumbnail--${item.platform}`}>
         {item.source ? (
-          <video controls playsInline preload="metadata" poster={item.poster} aria-label={item.title[language]}>
+          <video controls playsInline autoPlay={autoPlay} muted={autoPlay} preload={autoPlay ? 'auto' : 'metadata'} poster={item.poster} aria-label={item.title[language]}>
             <source src={item.source} type="video/mp4" />
             {unavailable}
           </video>

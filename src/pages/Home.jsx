@@ -41,6 +41,13 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container">
+          <div className="title-row"><SectionTitle eyebrow={t.home.galleryEyebrow} title={t.home.galleryTitle} intro={t.home.galleryIntro} /><Link className="text-link title-link" to="/gallery">{language === 'hi' ? 'सभी फोटो देखें' : 'View All Photos'}<Icon name="arrow" size={18} /></Link></div>
+          <GalleryGrid items={galleryItems.slice(0, 4)} />
+        </div>
+      </section>
+
       <section className="section section--tint">
         <div className="container">
           <SectionTitle eyebrow={t.home.visionEyebrow} title={t.home.visionTitle} intro={t.home.visionIntro} align="center" />
@@ -98,13 +105,6 @@ export default function Home() {
             <div className="card-icon"><Icon name="leaf" /></div><h2>{t.home.farmerTitle}</h2><p>{t.home.farmerText}</p>
             <div className="bullet-cloud"><span>{language === 'hi' ? 'योजना जानकारी' : 'Scheme information'}</span><span>{language === 'hi' ? 'बाजार संपर्क' : 'Market links'}</span><span>{language === 'hi' ? 'कृषि विकास' : 'Agricultural development'}</span></div>
           </article>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="title-row"><SectionTitle eyebrow={t.home.galleryEyebrow} title={t.home.galleryTitle} intro={t.home.galleryIntro} /><Link className="text-link title-link" to="/gallery">{language === 'hi' ? 'सभी फोटो देखें' : 'View All Photos'}<Icon name="arrow" size={18} /></Link></div>
-          <GalleryGrid items={galleryItems.slice(0, 4)} />
         </div>
       </section>
 
