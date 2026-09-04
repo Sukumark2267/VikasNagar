@@ -389,6 +389,14 @@ html[lang='hi'] .hero-copy h1 { line-height: 1.06; }
 .video-thumbnail--facebook { background: #183c65; }
 .video-thumbnail--external { background: #513e67; }
 .video-thumbnail video { width: 100%; height: 100%; display: block; object-fit: contain; background: #1d0b00; }
+.video-start-button { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; padding: 0; border: 0; color: #fff; background: #1d0b00; cursor: pointer; }
+.video-start-button::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29,11,0,.04), rgba(29,11,0,.48)); }
+.video-start-button img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.video-start-button__icon { z-index: 1; width: 66px; height: 66px; display: grid; place-items: center; border: 2px solid rgba(255,255,255,.8); border-radius: 50%; color: #fff; background: rgba(182,72,0,.88); box-shadow: 0 12px 28px rgba(0,0,0,.32); transition: transform .2s ease, background .2s ease; }
+.video-start-button__label { z-index: 1; position: absolute; bottom: 20px; padding: 7px 12px; border-radius: 999px; background: rgba(29,11,0,.78); font-size: .72rem; font-weight: 800; letter-spacing: .03em; }
+.video-start-button:hover .video-start-button__icon { background: var(--saffron); transform: scale(1.08); }
+.video-start-button:focus-visible { outline: 3px solid var(--saffron-light); outline-offset: -3px; }
+.video-playback-error { z-index: 2; position: absolute; right: 12px; bottom: 12px; left: 12px; padding: 8px 10px; border-radius: 8px; color: #fff; background: rgba(122,23,23,.92); font-size: .7rem; font-weight: 700; text-align: center; }
 .video-pattern { position: absolute; inset: -30%; background: repeating-radial-gradient(circle at 20% 40%, transparent 0 30px, rgba(255,255,255,.045) 31px 32px); transform: rotate(12deg); }
 .platform-label { position: absolute; top: 16px; left: 16px; padding: 5px 8px; border-radius: 5px; background: rgba(0,0,0,.22); font-size: .59rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .play-button { position: relative; color: var(--saffron-light); transition: transform .2s ease; }

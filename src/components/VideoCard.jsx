@@ -1,21 +1,42 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import Icon from './Icon'
 
 export default function VideoCard({ item, autoPlay = false }) {
   const { language } = useLanguage()
   const videoRef = useRef(null)
+  const userStartedRef = useRef(false)
+  const [hasStarted, setHasStarted] = useState(false)
+  const [playbackError, setPlaybackError] = useState('')
   const watch = language === 'hi' ? 'वीडियो देखें' : 'Watch video'
   const unavailable = language === 'hi' ? 'वीडियो शीघ्र जोड़ा जाएगा' : 'Video coming soon'
+  const playNow = language === 'hi' ? 'वीडियो चलाएँ' : 'Play video'
+  const playbackFailed = language === 'hi'
+    ? 'वीडियो नहीं चल सका। कृपया दोबारा प्रयास करें।'
+    : 'The video could not play. Please try again.'
   const videoLabel = language === 'hi' ? 'वीडियो' : 'Video'
   const meta = item.duration ? `${videoLabel} • ${item.duration}` : item.date?.[language]
+
+  const startVideo = () => {
+    const video = videoRef.current
+    if (!video) return
+
+    userStartedRef.current = true
+    video.muted = false
+    setPlaybackError('')
+    video.play().catch(() => setPlaybackError(playbackFailed))
+  }
 
   useEffect(() => {
     const video = videoRef.current
     if (!autoPlay || !video) return undefined
 
     video.muted = true
-    const playVideo = () => video.play().catch(() => undefined)
+    const playVideo = () => {
+      if (userStartedRef.current) return
+      video.muted = true
+      video.play().catch(() => undefined)
+    }
 
     if (!('IntersectionObserver' in window)) {
       playVideo()
@@ -24,7 +45,7 @@ export default function VideoCard({ item, autoPlay = false }) {
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) playVideo()
-      else video.pause()
+      else if (!userStartedRef.current) video.pause()
     }, { threshold: 0.45 })
 
     observer.observe(video)
@@ -38,10 +59,32 @@ export default function VideoCard({ item, autoPlay = false }) {
     <article className="video-card">
       <div className={`video-thumbnail video-thumbnail--${item.platform}`}>
         {item.source ? (
-          <video ref={videoRef} controls playsInline muted={autoPlay} preload={autoPlay ? 'auto' : 'metadata'} poster={item.poster} aria-label={item.title[language]}>
-            <source src={item.source} type="video/mp4" />
-            {unavailable}
-          </video>
+          <>
+            <video
+              ref={videoRef}
+              controls
+              playsInline
+              preload="metadata"
+              poster={item.poster}
+              aria-label={item.title[language]}
+              onPlay={() => {
+                setHasStarted(true)
+                setPlaybackError('')
+              }}
+              onError={() => setPlaybackError(playbackFailed)}
+            >
+              <source src={item.source} type="video/mp4" />
+              {unavailable}
+            </video>
+            {!hasStarted && (
+              <button type="button" className="video-start-button" onClick={startVideo} aria-label={`${playNow}: ${item.title[language]}`}>
+                {item.poster && <img src={item.poster} alt="" />}
+                <span className="video-start-button__icon" aria-hidden="true"><Icon name="play" size={34} /></span>
+                <span className="video-start-button__label">{playNow}</span>
+              </button>
+            )}
+            {playbackError && <span className="video-playback-error" role="alert">{playbackError}</span>}
+          </>
         ) : (
           <>
             <div className="video-pattern" aria-hidden="true" />
