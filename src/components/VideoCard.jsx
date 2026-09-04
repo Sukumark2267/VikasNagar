@@ -1,18 +1,44 @@
+import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import Icon from './Icon'
 
 export default function VideoCard({ item, autoPlay = false }) {
   const { language } = useLanguage()
+  const videoRef = useRef(null)
   const watch = language === 'hi' ? 'वीडियो देखें' : 'Watch video'
   const unavailable = language === 'hi' ? 'वीडियो शीघ्र जोड़ा जाएगा' : 'Video coming soon'
   const videoLabel = language === 'hi' ? 'वीडियो' : 'Video'
   const meta = item.duration ? `${videoLabel} • ${item.duration}` : item.date?.[language]
 
+  useEffect(() => {
+    const video = videoRef.current
+    if (!autoPlay || !video) return undefined
+
+    video.muted = true
+    const playVideo = () => video.play().catch(() => undefined)
+
+    if (!('IntersectionObserver' in window)) {
+      playVideo()
+      return () => video.pause()
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) playVideo()
+      else video.pause()
+    }, { threshold: 0.45 })
+
+    observer.observe(video)
+    return () => {
+      observer.disconnect()
+      video.pause()
+    }
+  }, [autoPlay, item.source])
+
   return (
     <article className="video-card">
       <div className={`video-thumbnail video-thumbnail--${item.platform}`}>
         {item.source ? (
-          <video controls playsInline autoPlay={autoPlay} muted={autoPlay} preload={autoPlay ? 'auto' : 'metadata'} poster={item.poster} aria-label={item.title[language]}>
+          <video ref={videoRef} controls playsInline muted={autoPlay} preload={autoPlay ? 'auto' : 'metadata'} poster={item.poster} aria-label={item.title[language]}>
             <source src={item.source} type="video/mp4" />
             {unavailable}
           </video>
